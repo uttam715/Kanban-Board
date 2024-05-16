@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
 
-import Stage from './Stage';
+import Stage from "./Stage";
 
-const Board = ({ stagesNames, stagesTasks, setTaskName }) => {
+const Board = ({ stagesNames, stagesTasks, setTaskName, changeTaskStage }) => {
   return (
     <div>
       <h1>Kanban board</h1>
-      <div style={{
-        display: 'flex',
-      }}>
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
         {stagesTasks.map((tasks, idx) => (
           <Stage
             stageId={idx}
@@ -16,11 +18,12 @@ const Board = ({ stagesNames, stagesTasks, setTaskName }) => {
             name={stagesNames[idx]}
             tasks={tasks}
             setTaskName={setTaskName}
+            changeTaskStage={changeTaskStage}
           />
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default Board;

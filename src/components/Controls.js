@@ -8,7 +8,7 @@ class Controls extends Component {
         <div style={{ display: 'flex', marginTop: '1rem' }}>
           <input
             readOnly
-            value={this.props.selectedTask}
+            value={this.props.selectedTask ?? ""}
             placeholder="Selected task name"
             style={{ fontSize: '1rem' }}
             data-testid="selected-task-field"

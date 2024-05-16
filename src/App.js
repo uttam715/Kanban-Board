@@ -49,11 +49,11 @@ class App extends Component {
     // });
     let decidedStage = this.decideStage(direction, containerStage);
     if (decidedStage !== null && decidedStage !== undefined) {
-      tasks.forEach(task => {
-        if(task.name ===selectedTask){
-          task.stage= decidedStage
+      tasks.forEach((task) => {
+        if (task.name === selectedTask) {
+          task.stage = decidedStage;
         }
-      })
+      });
       // tasks.splice(taskIndex, 1);
       this.setState({
         tasks,
@@ -87,6 +87,17 @@ class App extends Component {
     }
   };
 
+  changeTaskStage = (dropData, stageId) => {
+    let tasks = cloneDeep(this.state.tasks);
+    tasks.forEach((task) => {
+      if (task.name === dropData.name) {
+        task.stage = stageId;
+      }
+    });
+
+    this.setState({ tasks });
+  };
+
   render() {
     const { tasks } = this.state;
 
@@ -111,6 +122,7 @@ class App extends Component {
           stagesTasks={stagesTasks}
           stagesNames={this.stagesNames}
           setTaskName={this.setTaskName}
+          changeTaskStage={this.changeTaskStage}
         />
       </div>
     );

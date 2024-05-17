@@ -89,12 +89,12 @@ class App extends Component {
 
   changeTaskStage = (dropData, stageId) => {
     let tasks = cloneDeep(this.state.tasks);
-    tasks.forEach((task) => {
-      if (task.name === dropData.name) {
-        task.stage = stageId;
-      }
+    let taskIndex = findIndex(tasks, (task) => {
+      return task.name === dropData.name;
     });
-
+    const removedTask=tasks.splice(taskIndex,1)
+    removedTask[0].stage=stageId;
+    tasks.push(removedTask[0]);
     this.setState({ tasks });
   };
 
